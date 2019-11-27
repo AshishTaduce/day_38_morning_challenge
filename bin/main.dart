@@ -37,11 +37,15 @@
 //  return permutations;
 //}
 
-List<dynamic> findAllPermutations(String source) {
+List<dynamic> findAllPermutations(List input) {
+  String source= '';
+  for (int x in input){
+    source = source + x.toString();
+  }
   List permutations = [];
 
   void permutate(List list, int cursor) {
-    // when the cursor gets this far, we've found one permutation, so save it
+
     if (cursor == list.length) {
       permutations.add(list);
       return;
@@ -65,12 +69,6 @@ List<dynamic> findAllPermutations(String source) {
 }
 
 main() {
-
-  List list = [1,2,3,5,6];
-String source = '';
-for (int x in list){
-  source = source + x.toString();
-}
-print(int.parse(source));
-print(findAllPermutations(source));
+  List list = [1,2,3];
+  print(findAllPermutations(list));
 }
