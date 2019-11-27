@@ -38,10 +38,7 @@
 //}
 
 List<dynamic> findAllPermutations(List input) {
-  String source= '';
-  for (int x in input){
-    source = source + x.toString();
-  }
+
   List permutations = [];
 
   void permutate(List list, int cursor) {
@@ -55,7 +52,7 @@ List<dynamic> findAllPermutations(List input) {
         List permutation = List.from(list);
         permutation[cursor] = list[i];
         permutation[i] = list[cursor];
-        print(permutation);
+        //print(permutation);
         //permutations.add(permutation);
         permutate(permutation, cursor + 1);
       }
@@ -63,12 +60,14 @@ List<dynamic> findAllPermutations(List input) {
 
   }
 
-  permutate(source.split(''), 0);
+  permutate(input, 0);
 
   return permutations;
 }
 
 main() {
   List list = [1,2,3];
+//  List a = [[0],[0]];
+//  print(a.toSet());
   print(findAllPermutations(list));
 }
