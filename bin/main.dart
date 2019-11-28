@@ -1,5 +1,7 @@
 // Challenge: Find all permutations
 // Given a collection of *distinct* integers, return all possible permutations.
+
+
 /// Example:
 
 //  Input: [1,2,3]
@@ -37,37 +39,56 @@
 //  return permutations;
 //}
 
-List<dynamic> findAllPermutations(List input) {
 
-  List permutations = [];
+List permutations = [];
+//List<List<int>> findAllPermutations(List<int> input, ) {
+//  List permutations = [];
+//  if (input.length == 1) {
+//    permutations.add(input);
+//    return permutations;
+//  }
+//  else {
+//    for (int i = 0; i < input.length; i++) {
+//      for (int j = 0; j < input.length; j++) {
+//        List<int> permutation = List.from(input);
+//        permutation[j] = input[i];
+//        permutation[i] = input[j];
+//        print(permutation);
+//
+//        permutations.add(permutation);
+//        //findAllPermutations(permutation);
+//
+//      }
+//    }
+//    return permutations;
+//  }
+//}
 
-  void permutate(List list, int cursor) {
 
-    if (cursor == list.length) {
-      permutations.add(list);
-      return;
-    }
-    else{
-      for (int i = cursor; i < list.length; i++) {
-        List permutation = List.from(list);
-        permutation[cursor] = list[i];
-        permutation[i] = list[cursor];
-        //print(permutation);
-        //permutations.add(permutation);
-        permutate(permutation, cursor + 1);
+List<List<int>> findAllPermutations(List<int> input,) {
+  List<List<int>> permutations = [];
+  if (input.length == 1) {
+    return [input];
+  }
+  else {
+    for (int i = 0; i < input.length; i++) {
+      List<int> copy = List.from(input);
+      copy.removeAt(i);
+      List list = findAllPermutations(copy);
+      //print(list);
+      for (List <int> permutes in list) {
+        print(permutes);
+        permutes.insert(0, input[i]);
+        permutations.add(permutes);
       }
     }
-
   }
-
-  permutate(input, 0);
-
   return permutations;
 }
 
+
 main() {
-  List list = [1,2,3];
-//  List a = [[0],[0]];
-//  print(a.toSet());
+  List<int> list = [1, 2, 3];
+
   print(findAllPermutations(list));
 }
