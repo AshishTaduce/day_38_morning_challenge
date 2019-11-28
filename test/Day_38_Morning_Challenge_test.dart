@@ -11,7 +11,7 @@ void main() {
     List permutationSorted = findAllPermutations([1, 2, 3]);
     permutationSorted.sort;
     expect(permutationSorted,
-        [[1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 2, 1], [3, 1, 2]]);
+        [[1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1]]);
     expect((findAllPermutations([1, 2, 3, 4])).length,
         24);
     //Test to check repetition.
